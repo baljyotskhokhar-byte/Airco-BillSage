@@ -1,0 +1,1298 @@
+# AIRCO BILLSAGE — COMPLETE FRONTEND DEVELOPMENT PROMPT
+## Build a Premium, Production-Quality SaaS Frontend From Scratch
+
+You are a senior product designer, UX architect and frontend engineer.
+
+Your task is to design and build the complete frontend for **Airco BillSage**, an intelligent invoice and bill management SaaS platform.
+
+This is a completely new project. Start from scratch.
+
+**Do not inspect, reference, reuse, migrate or depend on any existing project, repository, codebase, database, backend or previous implementation.** Do not assume any existing components or architecture.
+
+Build the frontend as a standalone application with realistic mock data and functional client-side interactions. There is no backend integration in this task.
+
+The result must look and feel like a premium, commercially viable SaaS product that could be presented to enterprise customers.
+
+---
+
+# 1. PRODUCT UNDERSTANDING
+
+Airco BillSage helps businesses manage their invoices, bills, vendors, expenses and payments.
+
+The central workflow is:
+
+1. A user creates an account.
+2. The user enters their workspace.
+3. The user uploads invoices and bills.
+4. The platform presents extracted invoice information for review.
+5. The user can edit and confirm the extracted details.
+6. Confirmed bills appear in the bill history.
+7. The user can manage vendors, track payments and monitor financial activity.
+8. Dashboards and analytics provide visibility into business spending.
+
+The frontend must communicate intelligence, accuracy, simplicity and financial control.
+
+Avoid making the product look like basic accounting software from 2012.
+
+---
+
+# 2. TECHNOLOGY STACK
+
+Use the following frontend stack:
+
+### Core
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- TanStack Query (for clean data-fetching architecture, even though the initial implementation uses mock services)
+
+### UI and component ecosystem
+- shadcn/ui as the primary component foundation.
+- 21st.dev for premium, distinctive UI components and interaction patterns.
+- Radix UI primitives.
+- Lucide React icons.
+- Sonner for toast notifications.
+- cmdk for command palette.
+- Vaul for mobile drawers where appropriate.
+- React Day Picker for calendar interactions.
+
+### Animation and visualisation
+- Framer Motion / Motion for React.
+- Recharts for charts and financial visualisations.
+- date-fns for date formatting.
+- Number formatting using Intl.NumberFormat.
+
+### Forms and validation
+- React Hook Form.
+- Zod.
+- @hookform/resolvers.
+
+### Additional libraries
+- @tanstack/react-table for complex data tables.
+- react-dropzone for invoice upload interactions.
+- react-pdf or an appropriate PDF viewer for document previews.
+- next-themes or an equivalent theme provider if implementing dark mode.
+
+Use stable, compatible package versions. Do not add libraries merely for the sake of having more dependencies.
+
+---
+
+# 3. VISUAL IDENTITY AND DESIGN SYSTEM
+
+The application should follow a premium warm-neutral design language.
+
+The dominant visual identity is:
+
+**Warm Ivory + Ash + Charcoal + Muted Sage.**
+
+Do not use a conventional blue SaaS colour palette.
+
+## Colour palette
+
+Use these exact foundational tokens:
+
+| Purpose | Colour |
+|---|---|
+| Primary background | #EFE8DD |
+| Secondary / charcoal | #4A4A4A |
+| Main text | #292A28 |
+| Secondary text | #77736C |
+| Accent / sage | #71866D |
+| Success | #47765C |
+| Warning | #B77932 |
+| Danger | #790D16 |
+| Main surface | #FAF8F4 |
+| Elevated surface | #FFFFFF |
+| Borders | #D8D0C5 |
+
+Additional status backgrounds:
+
+- Success: #E5EDE5
+- Warning: #F4EBDD
+- Danger: #F2E3E3
+- Accent: #E7EBE3
+
+## Design rules
+
+1. The interface should be predominantly light.
+2. Use warm ivory for the overall application background.
+3. Use white or warm-white surfaces for cards, tables, forms and modals.
+4. Use charcoal for primary typography and important navigation elements.
+5. Use sage green selectively for primary actions, selected states and positive indicators.
+6. Use dark red only for errors, overdue warnings and destructive actions.
+7. Avoid excessive gradients.
+8. Avoid glassmorphism.
+9. Avoid neon colours.
+10. Avoid excessive shadows.
+11. Avoid oversized rounded cards.
+12. Avoid unnecessary decorative elements.
+13. Do not turn every piece of information into a card.
+14. Prioritise whitespace, alignment and typography.
+
+The product should feel like a combination of a refined financial application and a modern productivity tool.
+
+## Typography
+
+Use **Manrope** as the primary typeface.
+
+Typography hierarchy:
+
+- Page title: 28–32px, semibold.
+- Section heading: 17–20px, semibold.
+- Body text: 13–14px.
+- Table text: 13px.
+- Secondary labels: 11–12px.
+- Financial figures: 24–32px where appropriate.
+
+Use consistent line heights and avoid excessively bold typography.
+
+## Component styling
+
+- Buttons: restrained, medium height, clear hierarchy.
+- Inputs: subtle borders, clean focus states, sufficient height.
+- Tables: compact, highly readable, structured.
+- Cards: use only when information benefits from separation.
+- Dialogs: clean, focused, appropriately sized.
+- Drawers: useful for contextual editing and mobile interactions.
+- Tooltips: concise and helpful.
+- Badges: muted backgrounds with readable text.
+- Charts: minimal gridlines, restrained colours and useful tooltips.
+
+Use consistent spacing based on a 4px spacing system.
+
+---
+
+# 4. PROJECT STRUCTURE
+
+Create a clean frontend project with the following structure:
+
+frontend/
+  public/
+    logo/
+    illustrations/
+    favicon/
+
+  src/
+    app/
+      App.tsx
+      router.tsx
+      providers.tsx
+
+    assets/
+    
+    components/
+      ui/
+      common/
+      layout/
+      navigation/
+      tables/
+      charts/
+      forms/
+      feedback/
+      dialogs/
+
+    features/
+      auth/
+        pages/
+        components/
+        schemas/
+        hooks/
+
+      dashboard/
+        pages/
+        components/
+        hooks/
+
+      bills/
+        pages/
+        components/
+        schemas/
+        hooks/
+
+      vendors/
+        pages/
+        components/
+        hooks/
+
+      payments/
+        pages/
+        components/
+        hooks/
+
+      analytics/
+        pages/
+        components/
+        hooks/
+
+      settings/
+        pages/
+        components/
+        hooks/
+
+    layouts/
+      AuthLayout.tsx
+      AppLayout.tsx
+
+    lib/
+      utils.ts
+      formatters.ts
+      constants.ts
+
+    mocks/
+      data/
+      services/
+
+    hooks/
+    
+    types/
+
+    styles/
+      globals.css
+      theme.css
+
+    main.tsx
+
+Keep components modular and reusable. Do not create a massive single-file application.
+
+---
+
+# 5. AUTHENTICATION EXPERIENCE
+
+Create a polished authentication experience.
+
+The authentication screens should have a distinct visual identity while remaining consistent with the main application.
+
+## A. Signup page
+
+Route: /signup
+
+Build a professional registration page.
+
+### Layout
+
+Use a two-column composition on desktop:
+
+Left:
+- Brand identity.
+- Airco BillSage logo.
+- Headline: "A clearer view of every bill."
+- Supporting text explaining the product.
+- A tasteful abstract illustration or financial document visual.
+- Minimal decorative elements.
+
+Right:
+- Signup form inside a clean, elevated surface.
+- Clear heading: "Create your account".
+- Supporting description.
+- Structured input fields.
+
+### Signup fields
+
+Personal information:
+- Full name.
+- Username.
+- Email address.
+- Phone number.
+
+Address information:
+- Address.
+- PIN code.
+
+Account security:
+- Password.
+- Confirm password.
+
+### Form behaviour
+
+- All fields required.
+- Proper field-level validation.
+- Username and email format validation.
+- Indian phone number validation.
+- Six-digit Indian PIN code validation.
+- Password should accept arbitrary strings, including numeric-only passwords, alphabetic passwords, symbols and spaces.
+- Do not impose arbitrary character-composition requirements.
+- Keep passwords as strings.
+- Confirm password must match exactly.
+- Include password visibility controls.
+- Display errors directly below relevant fields.
+- Show a clean success state after mock registration.
+- Include a link to Sign In.
+
+Use React Hook Form and Zod.
+
+## B. Login page
+
+Route: /login
+
+Include:
+- Email or username.
+- Password.
+- Show/hide password.
+- Remember me.
+- Forgot password.
+- Sign-in button.
+- Signup link.
+
+Create a visually polished form with appropriate loading and error states.
+
+## C. Forgot password page
+
+Route: /forgot-password
+
+Include:
+- Email input.
+- Send reset link.
+- Success confirmation state.
+- Back to login.
+
+All authentication interactions should be simulated locally. Do not claim that real emails are sent.
+
+---
+
+# 6. MAIN APPLICATION SHELL
+
+The main application must have a premium, restrained layout.
+
+## Navigation
+
+Build a horizontal top navigation bar.
+
+Left side:
+- Airco BillSage logo.
+- Small product identity.
+
+Centre / main navigation:
+- Dashboard
+- Bills
+- Vendors
+- Payments
+- Analytics
+
+Right side:
+- Search / command palette.
+- Notifications.
+- User avatar.
+- Profile dropdown.
+
+Use active navigation indicators.
+
+Do not make the navigation excessively tall.
+
+## Application layout
+
+Use:
+- Fixed or sticky top navigation.
+- Main content container with consistent maximum width.
+- Warm neutral page background.
+- Responsive mobile navigation.
+- Breadcrumbs on deeper pages.
+- Consistent page headers.
+- Appropriate page-level action buttons.
+
+The application must work on:
+- Desktop.
+- Laptop.
+- Tablet.
+- Mobile.
+
+On mobile, replace the desktop navigation with a clean responsive menu or bottom navigation where appropriate.
+
+---
+
+# 7. DASHBOARD
+
+Route: /dashboard
+
+This is the main landing page after login.
+
+It should provide a useful overview without becoming a wall of KPI cards.
+
+## Header
+
+Title: "Dashboard"
+
+Subtitle: "Your financial activity, at a glance."
+
+Include:
+- Date range selector.
+- Optional export action.
+
+## Main spending visualisation
+
+Create a large, elegant spending trend line chart.
+
+Use Recharts.
+
+Allow the user to switch between:
+- Last 7 days.
+- Last 30 days.
+- Last 90 days.
+- This month.
+- Previous month.
+- Custom date range.
+
+Chart requirements:
+- Display date on the X-axis.
+- Display spending amount in INR on the Y-axis.
+- Smooth but not exaggerated line.
+- Sage accent colour.
+- Subtle gridlines.
+- Interactive tooltip.
+- Tooltip must show the date and exact amount.
+- Responsive layout.
+- Animated transitions when switching date ranges.
+
+## Additional dashboard sections
+
+Include:
+
+### Recent bills
+A compact table showing:
+- Bill number.
+- Vendor.
+- Date.
+- Amount.
+- Status.
+
+### Outstanding payments
+Show:
+- Total outstanding.
+- Number of unpaid bills.
+- Overdue amount.
+
+### Vendor spending
+A horizontal bar chart showing the top vendors by spending.
+
+### GST overview
+Show a breakdown of:
+- CGST.
+- SGST.
+- IGST.
+- Total GST.
+
+### Recent activity
+A clean activity feed showing:
+- Bill uploaded.
+- Bill confirmed.
+- Payment recorded.
+- Vendor added.
+
+Use realistic mock data.
+
+Do not invent excessive KPI cards. Make the spending chart the primary focus.
+
+---
+
+# 8. BILLS MANAGEMENT
+
+Route: /bills
+
+This is one of the most important areas of the application.
+
+Create a complete bill management interface.
+
+## Page header
+
+Title: "Bills"
+
+Subtitle: "Manage, review and track all your business invoices."
+
+Primary action:
+- Upload Bill.
+
+Secondary actions:
+- Export.
+- Filters.
+
+## Bill history table
+
+Columns:
+
+1. Bill / Invoice Number.
+2. Vendor.
+3. Invoice Date.
+4. Due Date.
+5. Total Amount.
+6. Payment Status.
+7. Processing / Review Status.
+8. Actions.
+
+Include:
+- Search.
+- Vendor filter.
+- Date filter.
+- Payment status filter.
+- Review status filter.
+- Sorting.
+- Pagination.
+- Column visibility controls.
+- Row selection.
+- Bulk actions where appropriate.
+
+Statuses:
+
+Payment status:
+- Paid.
+- Partially Paid.
+- Unpaid.
+- Overdue.
+
+Review status:
+- Processing.
+- Needs Review.
+- Confirmed.
+- Failed.
+
+Use visually subtle status badges.
+
+## Bill detail page
+
+Route: /bills/:id
+
+Display:
+
+### Header
+- Invoice number.
+- Vendor.
+- Current status.
+- Edit action.
+- Download action.
+- More actions menu.
+
+### Invoice information
+- Invoice date.
+- Due date.
+- PO number.
+- GSTIN.
+- Billing address.
+- Shipping address.
+- Place of supply.
+
+### Line items table
+- Description.
+- HSN/SAC.
+- Quantity.
+- Unit.
+- Unit price.
+- Discount.
+- Taxable value.
+- GST rate.
+- Tax amount.
+- Total.
+
+### Financial summary
+- Subtotal.
+- Discount.
+- Taxable amount.
+- CGST.
+- SGST.
+- IGST.
+- Other charges.
+- Round off.
+- Grand total.
+
+### Payment information
+- Total amount.
+- Amount paid.
+- Outstanding amount.
+- Payment history.
+
+Use appropriate tabs if the page becomes too long.
+
+## Upload bill experience
+
+Create a beautiful upload workflow.
+
+Use a drag-and-drop upload area with:
+- Dashed border.
+- Upload icon.
+- "Drop your invoice here" heading.
+- Browse files action.
+- Supported file types: PDF, JPG, JPEG and PNG.
+- File size guidance.
+- Upload progress indicator.
+
+Support multiple file selection in the frontend mock experience.
+
+After selection, display:
+- File name.
+- File type.
+- File size.
+- Preview.
+- Remove action.
+
+Provide an Upload button.
+
+Simulate processing with a realistic loading state and progress indicator.
+
+Do not pretend that actual OCR or AI processing is happening. Use mock processing data and label it appropriately in the demo.
+
+## Invoice review interface
+
+Route: /bills/:id/review
+
+Create a two-column invoice review workspace.
+
+Left side:
+- PDF or image document preview.
+- Zoom controls.
+- Page navigation.
+- Download action.
+- Fit-to-width option.
+
+Right side:
+- Extracted invoice information.
+- Editable fields.
+- Vendor details.
+- Invoice metadata.
+- Line items.
+- Tax breakdown.
+- Financial summary.
+
+Add a visual distinction between:
+- High-confidence extracted information.
+- Fields requiring attention.
+- Missing information.
+
+Include:
+- Save draft.
+- Confirm bill.
+- Reject / discard draft.
+
+The user must be able to edit extracted values before confirming.
+
+Use a clear, professional review experience. Avoid overwhelming the user with dozens of fields at once.
+
+---
+
+# 9. VENDOR MANAGEMENT
+
+Route: /vendors
+
+Create a clean vendor directory.
+
+Page heading:
+"Vendors"
+
+Subtitle:
+"Manage supplier information and understand your purchasing relationships."
+
+Primary action:
+- Add Vendor.
+
+## Vendor table
+
+The vendor list must have exactly these four primary columns:
+
+1. Vendor Name.
+2. GST Number.
+3. Address.
+4. Status.
+
+Do not add unnecessary columns to this table.
+
+Include:
+- Search.
+- Status filter.
+- Pagination.
+- Sorting.
+- Add vendor dialog.
+- Edit vendor action.
+- Archive vendor action.
+
+## Add / edit vendor dialog
+
+Fields:
+- Vendor name.
+- GSTIN.
+- Email.
+- Phone.
+- Address.
+- PIN code.
+- State.
+- Notes.
+
+Use field-level validation.
+
+## Vendor detail page
+
+Route: /vendors/:id
+
+This page should provide meaningful vendor intelligence.
+
+### Header
+- Vendor name.
+- GSTIN.
+- Address.
+- Contact details.
+- Active / inactive status.
+- Edit action.
+
+### Vendor financial overview
+
+Include:
+- Total purchases.
+- Total bills.
+- Outstanding amount.
+- Average invoice value.
+
+### Vendor spending trend
+A line or area chart showing monthly purchases.
+
+### Bill history
+A table of all invoices associated with this vendor.
+
+### Item purchase analysis
+
+Show:
+- Frequently purchased items.
+- Total quantity purchased.
+- Total spend by item.
+- Average purchase price.
+- Latest purchase price.
+- Historical price trend.
+
+Include a price comparison chart to identify changes in vendor pricing.
+
+Use mock data with believable Indian invoice examples.
+
+---
+
+# 10. PAYMENTS MANAGEMENT
+
+Route: /payments
+
+Create a payments tracking workspace.
+
+Page heading:
+"Payments"
+
+Subtitle:
+"Track outgoing payments and manage outstanding bills."
+
+Include a compact financial overview:
+- Total paid.
+- Total outstanding.
+- Overdue amount.
+
+Do not turn these into giant dashboard cards.
+
+## Payments table
+
+Columns:
+- Payment date.
+- Bill number.
+- Vendor.
+- Payment method.
+- Amount.
+- Reference number.
+- Status.
+
+Support:
+- Search.
+- Date filtering.
+- Vendor filtering.
+- Payment method filtering.
+- Sorting.
+- Pagination.
+
+## Record payment dialog
+
+Fields:
+- Bill.
+- Payment date.
+- Amount.
+- Payment method.
+- Transaction reference.
+- Notes.
+
+Payment methods:
+- Bank Transfer.
+- UPI.
+- Cheque.
+- Cash.
+- Other.
+
+Support partial payments.
+
+Display the remaining balance after recording a payment.
+
+Do not allow payment amounts to exceed the outstanding amount in the mock workflow.
+
+---
+
+# 11. ANALYTICS
+
+Route: /analytics
+
+Build a dedicated financial analytics workspace.
+
+This should feel like a serious business intelligence product, not a collection of random charts.
+
+Include:
+
+### Spending analytics
+- Monthly spending trend.
+- Spending by vendor.
+- Spending by category.
+- Spending by item.
+
+### Tax analytics
+- CGST.
+- SGST.
+- IGST.
+- Total GST.
+- GST trend over time.
+
+### Payment analytics
+- Paid versus unpaid.
+- Outstanding balance trend.
+- Overdue bill analysis.
+- Average payment delay.
+
+### Vendor analytics
+- Top vendors.
+- Vendor concentration.
+- Purchase frequency.
+- Price changes for frequently purchased items.
+
+Every chart must have:
+- Meaningful titles.
+- Appropriate labels.
+- Interactive tooltips.
+- Date range selection where relevant.
+- Proper INR formatting.
+- Responsive behaviour.
+
+Avoid chart overload. Use tabs or clear sections to organise the information.
+
+---
+
+# 12. PROFILE AND SETTINGS
+
+Route: /settings
+
+Build a clean settings experience.
+
+Use a left-side settings navigation on desktop and a responsive selector on mobile.
+
+Sections:
+
+### Personal profile
+- Full name.
+- Username.
+- Email.
+- Phone.
+- Address.
+- PIN code.
+- Profile image.
+
+### Account security
+- Change password.
+- Confirm new password.
+- Password visibility controls.
+- Active sessions UI (mock).
+
+### Preferences
+- Currency.
+- Date format.
+- Time zone.
+- Notification preferences.
+- Theme preference.
+
+### Workspace
+- Workspace name.
+- Business information.
+- GSTIN.
+- Business address.
+- Default invoice preferences.
+
+Use realistic forms with editable fields and save/cancel actions.
+
+---
+
+# 13. SEARCH AND COMMAND PALETTE
+
+Implement a global command palette using cmdk.
+
+Trigger:
+- Ctrl + K.
+- Cmd + K.
+- Search icon.
+
+Allow searching:
+- Bills.
+- Vendors.
+- Pages.
+- Actions.
+
+Example actions:
+- Upload a bill.
+- Add a vendor.
+- Open dashboard.
+- View overdue bills.
+- Open settings.
+
+Use mock search data.
+
+The command palette should feel fast and polished.
+
+---
+
+# 14. NOTIFICATIONS
+
+Create a notification popover or drawer.
+
+Include mock notifications:
+- Invoice successfully uploaded.
+- Bill needs review.
+- Payment overdue.
+- New vendor added.
+- Payment recorded.
+
+Features:
+- Mark as read.
+- Mark all as read.
+- Clear notification.
+- Notification timestamps.
+- Unread indicator.
+
+---
+
+# 15. INTERACTION AND MICRO-INTERACTION QUALITY
+
+The application must not be a static design mockup.
+
+Every visible interactive element must do something meaningful.
+
+Implement:
+- Functional navigation.
+- Search.
+- Filters.
+- Sorting.
+- Pagination.
+- Dropdowns.
+- Tabs.
+- Dialogs.
+- Drawers.
+- Form validation.
+- Toast notifications.
+- Upload simulation.
+- Bill editing.
+- Vendor editing.
+- Payment recording.
+- Date range selection.
+- Chart tooltips.
+- Table row actions.
+- Responsive menus.
+
+Use Framer Motion for:
+- Page transitions.
+- Dialog entrance.
+- Drawer animations.
+- Dropdown transitions where appropriate.
+- Subtle hover interactions.
+- Upload state transitions.
+- Loading and success states.
+
+Animation should be subtle and fast.
+
+Do not animate every element. The product is a financial application, not a gaming website.
+
+---
+
+# 16. MOCK DATA AND FRONTEND-ONLY ARCHITECTURE
+
+There is no backend in this task.
+
+Build a clean mock service architecture so the frontend can later be connected to real APIs without rewriting the UI.
+
+Create:
+- TypeScript interfaces for all business entities.
+- Mock users.
+- Mock bills.
+- Mock vendors.
+- Mock payments.
+- Mock notifications.
+- Mock analytics data.
+
+Create service modules such as:
+- authService
+- billService
+- vendorService
+- paymentService
+- analyticsService
+- notificationService
+
+Components must not directly manipulate large mock data arrays.
+
+Use service functions and hooks.
+
+Use localStorage for appropriate demo persistence:
+- Mock authenticated session.
+- Demo user profile.
+- Created vendors.
+- Edited bills.
+- Recorded payments.
+- Notification read state.
+
+Do not store real credentials or claim this is secure authentication.
+
+Provide an obvious demo mode using seeded mock data.
+
+Include realistic Indian business examples:
+- INR currency.
+- Indian GSTIN formats.
+- CGST / SGST / IGST.
+- Indian PIN codes.
+- Indian invoice numbering.
+- Indian dates.
+
+Use consistent mock data across all pages. If a payment is recorded against a bill, the bill's displayed payment state must update too.
+
+---
+
+# 17. 21ST.DEV AND SHADCN COMPONENT STRATEGY
+
+Use shadcn/ui as the foundational component library.
+
+Install and configure the appropriate components, including:
+
+- Button.
+- Input.
+- Textarea.
+- Label.
+- Select.
+- Checkbox.
+- Radio Group.
+- Switch.
+- Form.
+- Card.
+- Badge.
+- Avatar.
+- Separator.
+- Tabs.
+- Dialog.
+- Alert Dialog.
+- Sheet.
+- Drawer.
+- Popover.
+- Dropdown Menu.
+- Context Menu.
+- Command.
+- Tooltip.
+- Hover Card.
+- Calendar.
+- Date Picker.
+- Table.
+- Data Table.
+- Skeleton.
+- Progress.
+- Accordion.
+- Collapsible.
+- Breadcrumb.
+- Pagination.
+- Sonner.
+- Sidebar if useful for responsive layouts.
+
+Use 21st.dev to discover and integrate visually distinctive components where they genuinely improve the experience.
+
+Prioritise:
+- Premium navigation patterns.
+- Sophisticated dashboard sections.
+- Command menu patterns.
+- Beautiful upload interfaces.
+- Advanced data table patterns.
+- Animated dialogs and drawers.
+- Empty states.
+- Premium authentication layouts.
+- Elegant chart containers.
+- Interactive hover details.
+
+Do not blindly paste every 21st.dev component.
+
+For each imported component:
+1. Understand its dependencies.
+2. Install required packages.
+3. Adapt its styling to the BillSage design system.
+4. Ensure accessibility.
+5. Ensure responsive behaviour.
+6. Avoid duplicating existing shadcn components.
+
+The final interface must look cohesive, not like ten unrelated component libraries were assembled in a hurry.
+
+---
+
+# 18. RESPONSIVE DESIGN
+
+Build mobile-first where practical.
+
+### Desktop
+- Full horizontal navigation.
+- Two-column forms where appropriate.
+- Full data tables.
+- Multi-column analytics layouts.
+
+### Tablet
+- Condensed navigation.
+- Responsive chart grids.
+- Horizontally scrollable tables only when necessary.
+
+### Mobile
+- Compact navigation.
+- Single-column forms.
+- Full-width primary actions.
+- Tables transformed into readable mobile layouts or carefully controlled horizontal scrolling.
+- Bottom sheets for contextual actions.
+- Touch-friendly controls.
+- No horizontal page overflow.
+
+Test at common widths:
+- 1440px.
+- 1280px.
+- 1024px.
+- 768px.
+- 390px.
+- 360px.
+
+---
+
+# 19. ACCESSIBILITY AND UX QUALITY
+
+Follow accessible UI practices.
+
+- Semantic HTML.
+- Keyboard navigation.
+- Visible focus states.
+- Accessible labels.
+- ARIA attributes where required.
+- Proper contrast.
+- Screen-reader-friendly form errors.
+- Dialog focus management.
+- Keyboard-accessible dropdowns.
+- Reduced-motion support.
+
+All forms should provide clear validation feedback.
+
+All tables should have appropriate empty states.
+
+All pages should have loading, error and empty states where applicable.
+
+Never leave a button visually interactive but functionally inert.
+
+---
+
+# 20. QUALITY AND ACCEPTANCE CRITERIA
+
+The project is complete only when:
+
+1. The entire frontend is built from scratch.
+2. Every listed route works.
+3. Signup and login screens are implemented.
+4. All application sections are navigable.
+5. Mock data is consistent across the application.
+6. All forms validate properly.
+7. Tables support search, sorting and pagination.
+8. Charts display meaningful data.
+9. Bill upload simulation works.
+10. Invoice review and editing work.
+11. Vendor creation and editing work.
+12. Payment recording updates the associated bill.
+13. Profile settings are editable.
+14. Notifications are interactive.
+15. Command palette works.
+16. Desktop and mobile layouts are polished.
+17. There are no dead buttons or broken navigation links.
+18. There are no TypeScript errors.
+19. There are no console errors.
+20. Production build completes successfully.
+
+Run the application and test every route.
+
+Fix layout issues, overflow, inconsistent spacing, broken states and visual inconsistencies before declaring completion.
+
+---
+
+# 21. EXECUTION INSTRUCTIONS
+
+Work in the following order:
+
+**Phase 1 — Foundation**
+- Initialise the project.
+- Install dependencies.
+- Configure Tailwind and shadcn/ui.
+- Configure Manrope.
+- Define global colour tokens.
+- Set up routing and providers.
+- Create the reusable design system.
+
+**Phase 2 — Authentication**
+- Signup.
+- Login.
+- Forgot password.
+- Auth layout.
+- Mock session handling.
+
+**Phase 3 — Application shell**
+- Navigation.
+- Header.
+- Responsive layout.
+- Search.
+- Command palette.
+- Notifications.
+
+**Phase 4 — Main product**
+- Dashboard.
+- Bills.
+- Upload workflow.
+- Bill detail.
+- Invoice review.
+
+**Phase 5 — Business management**
+- Vendors.
+- Vendor details.
+- Payments.
+- Analytics.
+
+**Phase 6 — Settings**
+- Profile.
+- Security.
+- Preferences.
+- Workspace.
+
+**Phase 7 — Polish**
+- Motion.
+- Empty states.
+- Loading states.
+- Responsive refinement.
+- Accessibility.
+- Testing.
+- Production build.
+
+Do not stop after generating the initial UI.
+
+Complete all phases in sequence without asking for approval between phases.
+
+If a dependency or 21st.dev component is unavailable, use the closest appropriate alternative and continue.
+
+Do not introduce a backend, database, API server or cloud infrastructure.
+
+Do not spend time inspecting any old project. This is a completely new frontend implementation.
+
+## FINAL DESIGN DIRECTION
+
+The final product should feel:
+
+- Premium.
+- Minimal.
+- Intelligent.
+- Calm.
+- Trustworthy.
+- Modern.
+- Enterprise-ready.
+
+The interface should have the refinement of a well-funded SaaS product, without unnecessary visual complexity.
+
+**The most important requirement: build a genuinely beautiful and usable product, not merely a functional admin dashboard with a different colour palette.**

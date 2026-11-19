@@ -1,0 +1,134 @@
+:root {
+  /* Neutrals — Warm Ivory Canvas & Elevated Surfaces */
+  --bg-canvas: #EFE8DD;
+  --bg-surface: #FAF8F4;
+  --bg-elevated: #FFFFFF;
+  --bg-subtle: #E6DFD3;
+  --bg-dark-surface: #24252A;
+  --border-default: #D8D0C5;
+  --border-subtle: #E7E0D6;
+
+  --text-primary: #292A28;
+  --text-charcoal: #4A4A4A;
+  --text-secondary: #77736C;
+  --text-muted: #918C84;
+
+  /* Primary Jewel Brand Palette */
+  --brand-burgundy: #930031;
+  --brand-burgundy-hover: #760027;
+  --brand-burgundy-active: #5F001F;
+  --brand-burgundy-light: #B21E4D;
+  --brand-burgundy-bg: #F6E4EA;
+  --brand-burgundy-tint: #FBF3F5;
+
+  --brand-plum: #601D49;
+  --brand-plum-hover: #4C163A;
+  --brand-plum-light: #7D2D61;
+  --brand-plum-bg: #F1E6ED;
+  --brand-plum-tint: #F9F3F7;
+
+  --brand-navy: #133458;
+  --brand-navy-hover: #0E2742;
+  --brand-navy-light: #1F4C7C;
+  --brand-navy-bg: #E5EBF2;
+  --brand-navy-tint: #F3F6FA;
+
+  /* Supporting Jewel Palette */
+  --brand-mulberry: #813653;
+  --brand-mulberry-bg: #F3E8EC;
+
+  --brand-teal: #176B70;
+  --brand-teal-hover: #125458;
+  --brand-teal-light: #20888E;
+  --brand-teal-bg: #E3F0F0;
+  --brand-teal-tint: #F2F8F8;
+
+  --brand-gold: #C39742;
+  --brand-gold-text: #8F6A20;
+  --brand-gold-bg: #F8F1E1;
+  --brand-gold-tint: #FCF8EF;
+
+  --brand-rose: #C77C91;
+  --brand-rose-bg: #F7ECEF;
+
+  --brand-slate: #526E91;
+  --brand-slate-bg: #E8EEF5;
+
+  /* Semantic Status System */
+  --status-success: #176B70;
+  --status-success-bg: #E3F0F0;
+  --status-warning: #8F6A20;
+  --status-warning-bg: #F8F1E1;
+  --status-danger: #A61B29;
+  --status-danger-bg: #FAE8EA;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(41, 42, 40, 0.04);
+  --shadow-sm: 0 1px 3px rgba(19, 52, 88, 0.06), 0 1px 2px rgba(41, 42, 40, 0.03);
+  --shadow-md: 0 10px 26px -4px rgba(19, 52, 88, 0.12), 0 2px 6px -1px rgba(41, 42, 40, 0.05);
+}
+
+.dark {
+  --bg-canvas: #1B1C20;
+  --bg-surface: #24252A;
+  --bg-elevated: #2C2D33;
+  --bg-subtle: #34363D;
+  --bg-dark-surface: #16171A;
+  --border-default: #3C3E46;
+  --border-subtle: #31333A;
+
+  --text-primary: #F3EFE9;
+  --text-charcoal: #D6D1C8;
+  --text-secondary: #A59F96;
+  --text-muted: #7F7A72;
+
+  --brand-burgundy: #D13D6A;
+  --brand-burgundy-hover: #DF537D;
+  --brand-burgundy-active: #B82955;
+  --brand-burgundy-light: #E26B8F;
+  --brand-burgundy-bg: #3D1D28;
+  --brand-burgundy-tint: #2D1B22;
+
+  --brand-plum: #B86B9D;
+  --brand-plum-hover: #C882B0;
+  --brand-plum-light: #D496BF;
+  --brand-plum-bg: #362030;
+  --brand-plum-tint: #2A1D27;
+
+  --brand-navy: #638EC0;
+  --brand-navy-hover: #7BA1CC;
+  --brand-navy-light: #8CB0D7;
+  --brand-navy-bg: #1E2C3E;
+  --brand-navy-tint: #1B2533;
+
+  --brand-mulberry: #C97695;
+  --brand-mulberry-bg: #37202A;
+
+  --brand-teal: #49A6AB;
+  --brand-teal-hover: #5EB8BD;
+  --brand-teal-light: #72C4C8;
+  --brand-teal-bg: #1B3537;
+  --brand-teal-tint: #192B2C;
+
+  --brand-gold: #DFB664;
+  --brand-gold-text: #DFB664;
+  --brand-gold-bg: #382E1B;
+  --brand-gold-tint: #2C261A;
+
+  --brand-rose: #D995A8;
+  --brand-rose-bg: #39222A;
+
+  --brand-slate: #83A1C6;
+  --brand-slate-bg: #222D3C;
+
+  --status-success: #49A6AB;
+  --status-success-bg: #1B3537;
+  --status-warning: #DFB664;
+  --status-warning-bg: #382E1B;
+  --status-danger: #E86B78;
+  --status-danger-bg: #3C1E23;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+}

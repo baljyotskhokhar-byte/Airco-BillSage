@@ -1,0 +1,6 @@
+{
+  "name": "Airco BillSage",
+  "description": "Intelligent invoice, vendor, payment, and GST bill management SaaS platform for modern businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
